@@ -1,0 +1,10 @@
+<div class="card">
+  <img [src]="phimItem.HinhAnh" style="height:350px" />
+  <p class="lead">{{phimItem.TenPhim}}</p>
+  <button 
+    routerLink="/chitiet" 
+    [queryParams]="{maphim: phimItem.MaPhim, manhom: phimItem.MaNhom }" 
+    class="btn btn-success"
+  >Xem Chi Tiết</button>
+  <!-- <button [routerLink]="['/chitiet',phimItem.MaPhim ]" class="btn btn-success">Xem Chi Tiết</button> -->
+</div>

@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <h1 class="display-4 text-center">Form Đăng Ký</h1>
+      <form #formDK="ngForm" (ngSubmit)="dangKy(formDK)">
+        <div class="form-group">
+          <mat-form-field class="example-full-width w-100">
+            <input #taiKhoan="ngModel" minlength="10" maxlength="20" required matInput name="TaiKhoan" ngModel
+              placeholder="Tài Khoản" />
+          </mat-form-field>
+          <div *ngIf="taiKhoan.errors && (taiKhoan.touched || taiKhoan.dirty ) ">
+            <div class="alert alert-danger" *ngIf="taiKhoan.errors.required">
+              * Vui lòng nhập tài khoản
+            </div>
+            <div class="alert alert-danger" *ngIf="taiKhoan.errors.minlength">
+              * Tài khoản phải có ít nhất 10 kí tự
+            </div>
+          </div>
+
+        </div>
+        <div class="form-group">
+          <mat-form-field class="example-full-width w-100">
+            <input matInput name="MatKhau" ngModel placeholder="Mật Khẩu" />
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field class="example-full-width w-100">
+            <input matInput #hoTen="ngModel" name="HoTen" ngModel placeholder="Họ Tên" [pattern]='"^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" +
+            "ẸẺẼỀỀẾỂưăạảấầẩẫậắằẳẵặẹẻẽềềếểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" +
+            "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$"' />
+          </mat-form-field>
+          <div *ngIf="hoTen.errors && (hoTen.touched || hoTen.dirty)">
+            <div class="alert alert-danger" *ngIf="hoTen.errors.pattern">
+              *Họ Tên phải là chữ
+            </div>
+
+          </div>
+        </div>
+        <div class="form-group">
+          <mat-form-field class="example-full-width w-100">
+            <input matInput #email="ngModel" email name="Email" ngModel placeholder="Email" />
+          </mat-form-field>
+          <div *ngIf="email.errors && (email.touched || email.dirty)">
+            <div class="alert alert-danger" *ngIf="email.errors.email">
+              *Email không đúng định dạng
+            </div>
+
+          </div>
+        </div>
+        <div class="form-group">
+          <mat-form-field class="example-full-width w-100">
+            <input matInput name="SoDT" ngModel placeholder="Số Điện Thoại" />
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field class="example-full-width w-100">
+            <input matInput name="MaNhom" ngModel placeholder="Mã Nhóm" />
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field class="w-100">
+            <mat-select name="MaLoaiNguoiDung" ngModel placeholder="Loại Người Dùng">
+              <mat-option value="KhachHang">Khách Hàng</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-group text-center">
+          <button [disabled]="formDK.invalid" type="submit" mat-raised-button color="primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- 
+<button (click)="hideSidebar()" class="btn btn-success">Hide Sidebar</button>
+<button (click)="showSidebar()" class="btn btn-info">Show Sidebar</button>
+<h1 *ngIf="statusDK">Đăng Ký Component</h1> -->

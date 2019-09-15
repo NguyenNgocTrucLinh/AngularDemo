@@ -1,0 +1,22 @@
+<img [src]="phim.HinhAnh">
+<h1>{{phim.TenPhim}}</h1>
+<iframe width="961" height="507" [src]="phim.Trailer | safe" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ngày Chiếu</th>
+            <th>Giờ Chiếu</th>
+            <th>Hành Động</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let suatchieu of phim.LichChieu">
+            <td>{{suatchieu.NgayChieuGioChieu | date: 'dd/MM/yyyy'}}</td>
+            <td>{{suatchieu.NgayChieuGioChieu | date: 'hh:mm'}}</td>
+            <td>
+                <button [routerLink]="['/datghe',suatchieu.MaLichChieu]" class="btn btn-success">Đặt Vé</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
